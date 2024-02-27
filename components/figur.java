@@ -1,4 +1,9 @@
+// Imports
+
 import greenfoot*; 
+
+// Code
+
 public class Figur {
     char farbe;
     constructor(color) {
