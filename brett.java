@@ -4,6 +4,8 @@ import greenfoot*;
 
 // Code
 
-public void main() {
+public class Brett {
+    private void prepare() {
 
+    }
 }
