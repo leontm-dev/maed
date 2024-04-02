@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=GameBoard
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ MyWorld\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=GameBoard()
+comment2.params=
+comment2.target=void\ prepareBoard()
+comment3.params=x\ y
+comment3.target=java.lang.String\ isSpecialPosition(int,\ int)
+comment4.params=
+comment4.target=void\ preparePlayers()
+comment5.params=
+comment5.target=void\ act()
+numComments=6
