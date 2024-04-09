@@ -25,7 +25,7 @@ public class GameBoard extends World
         orangeImage = new GreenfootImage("orangeImage.png");
         greenImage = new GreenfootImage("greenImage.png");
         blueImage = new GreenfootImage("blueImage.png");
-        blueImage = new GreenfootImage("normalImage.png");
+        normalImage = new GreenfootImage("normalImage.png");
         prepareBoard();
         preparePlayers();
     }
