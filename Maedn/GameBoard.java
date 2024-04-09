@@ -84,7 +84,7 @@ public class GameBoard extends World
                 {9, 0}, {10, 0}, {9, 1}, {10, 1}, {7, 0}, {6, 1}, {6, 2}, {6, 3}, {6, 4}  
             };
         int[][] normalPosition = {
-                {0, 0}, {0, 1}, {0, 9}, {0, 10},
+                {1, 4}, {2, 4}, {3, 4}, {4, 4}, {4, 3}, {4, 2}, {4, 1}, {4, 0}, {5, 0}, {6, 1}, {6, 2}, {6, 3}, {6, 4}, {7, 4}, {8, 4}, {9, 4}, {10, 4}, {11, 4}, {11, 5}
             };
 
         // Check if the given position matches any special position
