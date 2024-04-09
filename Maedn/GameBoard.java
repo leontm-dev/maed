@@ -72,7 +72,7 @@ public class GameBoard extends World
         // based on the colored cells of the "Mensch Ärger dich nicht" board game
 
         int[][] redPosition = {
-                {9, 9}, {10, 9}, {9, 10}, {10, 10}, { 10, 6 }, { 9, 5 }, { 8, 5 }, { 7, 5 }, { 6, 5}
+                {9, 9}, {10, 9}, {9, 10}, {10, 10}, {10, 6}, {9, 5}, {8, 5}, {7, 5}, {6, 5}
             };
         int[][] orangePosition = {
                 {0, 0}, {0, 1}, {0, 9}, {0, 10},
@@ -81,7 +81,7 @@ public class GameBoard extends World
                 {0, 0}, {1, 0}, {0, 1}, {1, 1}, {0, 4}, {1, 5}, {2, 5}, {3, 5}, {4, 5}
             };
         int[][] bluePosition = {
-                {9, 0}, {10, 0}, {9, 1}, {10, 1}, { 7, 0 }, { 6, 1 }, { 6, 2 }, { 6, 3 }, { 6, 4 }  
+                {9, 0}, {10, 0}, {9, 1}, {10, 1}, {7, 0}, {6, 1}, {6, 2}, {6, 3}, {6, 4}  
             };
         int[][] normalPosition = {
                 {0, 0}, {0, 1}, {0, 9}, {0, 10},
