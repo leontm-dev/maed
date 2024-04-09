@@ -93,19 +93,24 @@ public class GameBoard extends World
                 return "red";
             }
         }
-        for (int[] position : redPosition) {
+        for (int[] position : orangePosition) {
             if (x == position[0] && y == position[1]) {
                 return "orange";
             }
         }
-        for (int[] position : redPosition) {
+        for (int[] position : greenPosition) {
             if (x == position[0] && y == position[1]) {
                 return "green";
             }
         }
-        for (int[] position : redPosition) {
+        for (int[] position : bluePosition) {
             if (x == position[0] && y == position[1]) {
                 return "blue";
+            }
+        }
+        for (int[] position : normalPosition) {
+            if (x == position[0] && y == position[1]) {
+                return "normal";
             }
         }
 
