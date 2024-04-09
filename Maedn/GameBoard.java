@@ -72,19 +72,19 @@ public class GameBoard extends World
         // based on the colored cells of the "Mensch Ärger dich nicht" board game
 
         int[][] redPosition = {
-                {0, 0}, {0, 1}, {0, 9}, {0, 10}, // Red area
+                {0, 0}, {0, 1}, {0, 9}, {0, 10},
             };
         int[][] orangePosition = {
-                {0, 0}, {0, 1}, {0, 9}, {0, 10}, // Red area
+                {0, 0}, {0, 1}, {0, 9}, {0, 10},
             };
         int[][] greenPosition = {
-                {0, 0}, {0, 1}, {0, 9}, {0, 10}, // Red area
+                {0, 0}, {0, 1}, {0, 9}, {0, 10},
             };
         int[][] bluePosition = {
-                {0, 0}, {0, 1}, {0, 9}, {0, 10}, // Red area
+                {0, 0}, {0, 1}, {0, 9}, {0, 10},
             };
         int[][] normalPosition = {
-                {0, 0}, {0, 1}, {0, 9}, {0, 10}, // Red area
+                {0, 0}, {0, 1}, {0, 9}, {0, 10},
             };
 
         // Check if the given position matches any special position
