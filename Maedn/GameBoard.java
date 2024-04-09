@@ -1,11 +1,5 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-/**
- * Write a description of class MyWorld here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class GameBoard extends World
 {
     public static int cellSize = 75;
@@ -20,6 +14,8 @@ public class GameBoard extends World
     private GreenfootImage orangeImage;
     private GreenfootImage greenImage;
     private GreenfootImage blueImage;
+    private GreenfootImage normalImage;
+        
 
     public GameBoard()
     {
@@ -29,6 +25,7 @@ public class GameBoard extends World
         orangeImage = new GreenfootImage("orangeImage.png");
         greenImage = new GreenfootImage("greenImage.png");
         blueImage = new GreenfootImage("blueImage.png");
+        blueImage = new GreenfootImage("normalImage.png");
         prepareBoard();
         preparePlayers();
     }
@@ -51,9 +48,13 @@ public class GameBoard extends World
                 {
                     cell.setImage(greenImage);
                 }
-                else if(isSpecialPosition(i, j) == "blue") 
+                else if(isSpecialPosition(i, j) == "blue")
                 {
                     cell.setImage(blueImage);
+                }
+                else if(isSpecialPosition(i, j) == "normal")
+                {
+                    cell.setImage(normalImage);
                 }
                 else
                 {
@@ -71,6 +72,18 @@ public class GameBoard extends World
         // based on the colored cells of the "Mensch Ärger dich nicht" board game
 
         int[][] redPosition = {
+                {0, 0}, {0, 1}, {0, 9}, {0, 10}, // Red area
+            };
+        int[][] orangePosition = {
+                {0, 0}, {0, 1}, {0, 9}, {0, 10}, // Red area
+            };
+        int[][] greenPosition = {
+                {0, 0}, {0, 1}, {0, 9}, {0, 10}, // Red area
+            };
+        int[][] bluePosition = {
+                {0, 0}, {0, 1}, {0, 9}, {0, 10}, // Red area
+            };
+        int[][] normalPosition = {
                 {0, 0}, {0, 1}, {0, 9}, {0, 10}, // Red area
             };
 
