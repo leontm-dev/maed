@@ -1,5 +1,10 @@
 import greenfoot.*;
 
+
+// for dicing
+// Greenfoot.getRandomNumber
+
+
 public class GameBoard extends World
 {
     public static int cellSize = 75;
@@ -9,6 +14,7 @@ public class GameBoard extends World
     private GreenfootImage[] playerImages;
     private int currentPlayerIndex;
     private int[] positions;
+    public static int turnInt;
 
     private GreenfootImage bgImage;
     private GreenfootImage normalImage;
@@ -53,6 +59,8 @@ public class GameBoard extends World
         Greenfoot.delay(1);
         PrepareBoard();
         PreparePlayers();
+        
+        showText("Turn: Player " + (turnInt + 1), 5, 5);
     }
     
     private void SetSpecialPositions()
@@ -146,6 +154,7 @@ public class GameBoard extends World
         players = new Player[4];
         for (int i = 0; i < players.length; i++) {
             players[i] = new Player(i);
+            players[i].id = i;
             players[i].setImage(playerImages[i]);
             addObject(players[i], 75, 75);
             players[i].setLocation(i, 2);
