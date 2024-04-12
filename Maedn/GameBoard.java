@@ -6,53 +6,97 @@ public class GameBoard extends World
     public static int boardSizeX = 11;
     public static int boardSizeY = 11;
     private Player[] players;
+    private GreenfootImage[] playerImages;
     private int currentPlayerIndex;
     private int[] positions;
 
     private GreenfootImage bgImage;
+    private GreenfootImage normalImage;
     private GreenfootImage redImage;
     private GreenfootImage orangeImage;
     private GreenfootImage greenImage;
     private GreenfootImage blueImage;
-    private GreenfootImage normalImage;
+    
+    private GreenfootImage playerRed;
+    private GreenfootImage playerOrange;
+    private GreenfootImage playerGreen;
+    private GreenfootImage playerBlue;
+    
+    private int[][] redPositions;
+    private int[][] orangePositions;
+    private int[][] greenPositions;
+    private int[][] bluePositions;
+    private int[][] normalPositions;
         
 
     public GameBoard()
     {
         super(boardSizeX, boardSizeY, cellSize);
         bgImage = new GreenfootImage("bgImage.png");
+        normalImage = new GreenfootImage("normalImage.png");
         redImage = new GreenfootImage("redImage.png");
         orangeImage = new GreenfootImage("orangeImage.png");
         greenImage = new GreenfootImage("greenImage.png");
         blueImage = new GreenfootImage("blueImage.png");
-        normalImage = new GreenfootImage("normalImage.png");
-        prepareBoard();
-        preparePlayers();
+        
+        playerImages = new GreenfootImage[4];
+        playerRed = new GreenfootImage("playerRed.png");
+        playerImages[0] = playerRed;
+        playerOrange = new GreenfootImage("playerOrange.png");
+        playerImages[1] = playerOrange;
+        playerGreen = new GreenfootImage("playerGreen.png");
+        playerImages[2] = playerGreen;
+        playerBlue = new GreenfootImage("playerBlue.png");
+        playerImages[3] = playerBlue;
+        
+        SetSpecialPositions();
+        Greenfoot.delay(1);
+        PrepareBoard();
+        PreparePlayers();
+    }
+    
+    private void SetSpecialPositions()
+    {
+        redPositions = new int[][]{
+                {10, 9}, {9, 10}, {10, 10}, {10, 6}, {9, 5}, {8, 5}, {7, 5}
+            };
+        orangePositions = new int[][] {
+                {0, 10}, {0, 9}, {1, 10}, {4, 10}, {5, 9}, {5, 8}, {5, 7}
+            };
+        greenPositions = new int[][] {
+                {0, 0}, {1, 0}, {0, 1}, {0, 4}, {1, 5}, {2, 5}, {3, 5},
+            };
+        bluePositions = new int[][] {
+                {9, 0}, {10, 0}, {10, 1}, {6, 0}, {5, 1}, {5, 2}, {5, 3} 
+            };
+        normalPositions = new int[][] {
+                {1, 4}, {2, 4}, {3, 4}, {4, 4}, {4, 3}, {4, 2}, {4, 1}, {4, 0}, {5, 0}, {6, 1}, {6, 2}, {6, 3}, {6, 4}, {7, 4}, {8, 4}, {9, 4}, {10, 4}, {10, 5}, {9, 6}, {8, 6}, {7, 6}, {6, 6}, {6, 7}, {6, 8}, {6, 9}, {6, 10}, {5, 10}, {4, 9}, {4, 8}, {4, 7}, {4, 6}, {3, 6}, {2, 6}, {1, 6}, {0, 6}, { 0, 5} 
+            };
     }
 
-    private void prepareBoard()
+    private void PrepareBoard()
     {
         // Create the game board cells
         for (int i = 0; i < boardSizeX; i++) {
             for (int j = 0; j < boardSizeY; j++){
                 Cell cell = new Cell();
-                if (isSpecialPosition(i, j) == "red")
+                if (IsSpecialPosition(i, j) == "red")
                 {
                     cell.setImage(redImage);
                 }
-                else if(isSpecialPosition(i, j) == "orange") 
+                else if(IsSpecialPosition(i, j) == "orange") 
                 {
                     cell.setImage(orangeImage);
                 }
-                else if (isSpecialPosition(i, j) == "green")
+                else if (IsSpecialPosition(i, j) == "green")
                 {
                     cell.setImage(greenImage);
                 }
-                else if(isSpecialPosition(i, j) == "blue")
+                else if(IsSpecialPosition(i, j) == "blue")
                 {
                     cell.setImage(blueImage);
                 }
-                else if(isSpecialPosition(i, j) == "normal")
+                else if(IsSpecialPosition(i, j) == "normal")
                 {
                     cell.setImage(normalImage);
                 }
@@ -66,49 +110,29 @@ public class GameBoard extends World
         }
     }
 
-    private String isSpecialPosition(int x, int y)
+    private String IsSpecialPosition(int x, int y)
     {
-        // Determine if the position (x, y) is a special position
-        // based on the colored cells of the "Mensch Ärger dich nicht" board game
-
-        int[][] redPosition = {
-                {10, 9}, {9, 10}, {10, 10}, {10, 6}, {9, 5}, {8, 5}, {7, 5}
-            };
-        int[][] orangePosition = {
-                {0, 10}, {0, 9}, {1, 10}, {4, 10}, {5, 9}, {5, 8}, {5, 7}
-            };
-        int[][] greenPosition = {
-                {0, 0}, {1, 0}, {0, 1}, {0, 4}, {1, 5}, {2, 5}, {3, 5},
-            };
-        int[][] bluePosition = {
-                {9, 0}, {10, 0}, {10, 1}, {6, 0}, {5, 1}, {5, 2}, {5, 3} 
-            };
-        int[][] normalPosition = {
-                {1, 4}, {2, 4}, {3, 4}, {4, 4}, {4, 3}, {4, 2}, {4, 1}, {4, 0}, {5, 0}, {6, 1}, {6, 2}, {6, 3}, {6, 4}, {7, 4}, {8, 4}, {9, 4}, {10, 4}, {10, 5}, {9, 6}, {8, 6}, {7, 6}, {6, 6}, {6, 7}, {6, 8}, {6, 9}, {6, 10}, {5, 10}, {4, 9}, {4, 8}, {4, 7}, {4, 6}, {3, 6}, {2, 6}, {1, 6}, {0, 6}, { 0, 5} 
-            };
-
-        // Check if the given position matches any special position
-        for (int[] position : redPosition) {
+        for (int[] position : redPositions) {
             if (x == position[0] && y == position[1]) {
                 return "red";
             }
         }
-        for (int[] position : orangePosition) {
+        for (int[] position : orangePositions) {
             if (x == position[0] && y == position[1]) {
                 return "orange";
             }
         }
-        for (int[] position : greenPosition) {
+        for (int[] position : greenPositions) {
             if (x == position[0] && y == position[1]) {
                 return "green";
             }
         }
-        for (int[] position : bluePosition) {
+        for (int[] position : bluePositions) {
             if (x == position[0] && y == position[1]) {
                 return "blue";
             }
         }
-        for (int[] position : normalPosition) {
+        for (int[] position : normalPositions) {
             if (x == position[0] && y == position[1]) {
                 return "normal";
             }
@@ -117,12 +141,14 @@ public class GameBoard extends World
         return "bg";
     }
 
-    private void preparePlayers() {
+    private void PreparePlayers() {
         // Initialize players
         players = new Player[4];
         for (int i = 0; i < players.length; i++) {
             players[i] = new Player(i);
-            addObject(players[i], 40, 40 + i * 80);
+            players[i].setImage(playerImages[i]);
+            addObject(players[i], 75, 75);
+            players[i].setLocation(i, 2);
         }
     }
 
