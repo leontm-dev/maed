@@ -33,7 +33,8 @@ public class GameBoard extends World
     private int[][] greenPositions;
     private int[][] bluePositions;
     private int[][] normalPositions;
-        
+    
+    private static int[][] checkPoints = { {4, 4}, {6, 4}, {6, 6}, {4, 6} }; 
 
     public GameBoard()
     {
