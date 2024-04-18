@@ -42,8 +42,6 @@ public class Player extends Actor
     
     public void Move()
     {
-        // TODO: Check for checkpoint and change direction
-        int[][] position = new int[][]{{getX(), getY()}};
         int i = 0;
         for (int[] checkPoint : GameBoard.checkPoints)
         {
