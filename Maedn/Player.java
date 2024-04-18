@@ -10,6 +10,7 @@ public class Player extends Actor
 {
     public int id;
     public String direction;
+    GameBoard myWorld = (GameBoard)getWorld();
 
     public Player(int id) {
         this.id = id;
@@ -23,16 +24,19 @@ public class Player extends Actor
     {
         if (Greenfoot.mouseClicked(this))
         {
+            /*
             if (GameBoard.turnInt != id)    // Isn't your turn
             {
                 return;
             }
+            */
             
             getWorld().showText("Clicked", getX(), getY());
             
             // Clicked on this player figure
             // Move this figure
             Move();
+            ((GameBoard)getWorld()).TurnEnd();
         }
     }
     

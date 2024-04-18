@@ -63,7 +63,8 @@ public class GameBoard extends World
         PrepareBoard();
         PreparePlayers();
         
-        showText("Turn: Player " + (turnInt + 1), 5, 5);
+        turnInt = 0;
+        TurnStart();
     }
     
     private void SetSpecialPositions()
@@ -164,6 +165,24 @@ public class GameBoard extends World
         }
     }
 
+    private void TurnStart()
+    {
+        showText("Turn: Player " + (turnInt + 1), 5, 5);
+    }
+    
+    public void TurnEnd()
+    {
+        if (turnInt < players.length)
+        {
+            turnInt++;
+        }
+        else
+        {
+            turnInt = 0;
+        }
+        TurnStart();
+    }
+    
     public void act() {
         // Game logic goes here
     }
