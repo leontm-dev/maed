@@ -34,7 +34,9 @@ public class GameBoard extends World
     private int[][] bluePositions;
     private int[][] normalPositions;
     
-    private static int[][] checkPoints = { {4, 4}, {6, 4}, {6, 6}, {4, 6} }; 
+    public static int[][] checkPoints = { {4, 0}, {6, 0}, {6, 4}, {10, 4}, {10, 6}, {6, 6}, {6, 10}, {4, 10}, {4, 6}, {0, 6}, {0, 4}, {4, 4}};
+    // 0 = north, 1 = east, 2 = south, 3 = west
+    public static int[] directionCheckpoint = {1, 2, 1, 2, 3, 2, 3, 0, 3, 0, 1, 0};
 
     public GameBoard()
     {
@@ -152,13 +154,13 @@ public class GameBoard extends World
 
     private void PreparePlayers() {
         // Initialize players
-        players = new Player[4];
+        players = new Player[1];
         for (int i = 0; i < players.length; i++) {
             players[i] = new Player(i);
             players[i].id = i;
             players[i].setImage(playerImages[i]);
             addObject(players[i], 75, 75);
-            players[i].setLocation(i, 2);
+            players[i].setLocation(0, 4);
         }
     }
 
