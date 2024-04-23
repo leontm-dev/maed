@@ -169,7 +169,7 @@ public class GameBoard extends World
     private void TurnStart()
     {
         showText("Turn: Player " + (turnInt + 1), 5, 5);
-        showText("Click dice", dicePositions[turnInt]);
+        showText("Click dice", dicePositions[turnInt][0], dicePositions[turnInt][1]);
     }
     
     public void TurnEnd()
