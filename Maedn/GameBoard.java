@@ -173,6 +173,7 @@ public class GameBoard extends World
                 players[i] = new Player(i);
                 players[i].id = i;
                 players[i].setImage(playerImages[i]);
+                dice.setImage(playerImages[i]);
                 addObject(dice, 75, 75);
                 addObject(players[i], 75, 75);
 
