@@ -207,7 +207,7 @@ public class GameBoard extends World
     
     public void TurnEnd()
     {
-        if (turnInt < players.length)
+        if (turnInt < players.length - 1)
         {
             turnInt++;
         }
@@ -224,6 +224,14 @@ public class GameBoard extends World
         }
     }
     public void act() {
-        // Game logic goes here
+        if (gameStart)
+        {
+            String key = Greenfoot.getKey();
+            if (key == 1)
+            {
+                // Spawn 1
+            }
+            // ...
+        }
     }
 }

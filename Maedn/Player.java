@@ -26,12 +26,13 @@ public class Player extends Actor
     {
         if (Greenfoot.mouseClicked(this))
         {
-            if (GameBoard.turnInt != id || fieldCount == 0)    // TODO: Max fields or to big
+            if (GameBoard.turnInt != id || fieldCount == 0 || !Dice.isRolled)    // TODO: Max fields or to big
             {
                 return;
             }
             
-            if (Dice.isRolled) {
+            if (Dice.isRolled)
+            {
                 for (int i = 0; i < Dice.currentNumber; i++)
                 {
                     Move();
