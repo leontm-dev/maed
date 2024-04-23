@@ -15,6 +15,7 @@ public class GameBoard extends World
     private int currentPlayerIndex;
     private int[] positions;
     public static int turnInt;
+    private int playerCount = 2;
 
     private GreenfootImage bgImage;
     private GreenfootImage normalImage;
@@ -33,7 +34,14 @@ public class GameBoard extends World
     private int[][] greenPositions;
     private int[][] bluePositions;
     private int[][] normalPositions;
+
     private static int[][] dicePositions = { {2, 2}, {8, 2}, {8, 8}, {2, 8}};
+
+    private static int[][] redSpawns = { {10, 9}, {9, 10}, {10, 10}, {10, 6}};
+    private static int[][] orangeSpawns = { {0, 10}, {0, 9}, {1, 10}, {4, 10}};
+    private static int[][] greenSpawns = { {0, 0}, {1, 0}, {0, 1}, {0, 4}};
+    private static int[][] blueSpawns = { {9, 0}, {10, 0}, {10, 1}, {6, 0}};
+
     
     public static int[][] checkPoints = { {4, 0}, {6, 0}, {6, 4}, {10, 4}, {10, 6}, {6, 6}, {6, 10}, {4, 10}, {4, 6}, {0, 6}, {0, 4}, {4, 4}};
     // 0 = north, 1 = east, 2 = south, 3 = west
@@ -156,13 +164,33 @@ public class GameBoard extends World
 
     private void PreparePlayers() {
         // Initialize players
-        players = new Player[1];
-        for (int i = 0; i < players.length; i++) {
-            players[i] = new Player(i);
-            players[i].id = i;
-            players[i].setImage(playerImages[i]);
-            addObject(players[i], 75, 75);
-            players[i].setLocation(0, 4);
+        players = new Player[playerCount - 1];
+        for (int i = 0; i < players.length; i++)
+        {
+            for (int j = 0; j < 3; i++)
+            {
+                players[i] = new Player(i);
+                players[i].id = i;
+                players[i].setImage(playerImages[i]);
+                addObject(players[i], 75, 75);
+
+                if (i == 0)
+                {
+                    players[i].setLocation(greenSpawns[j][0], greenSpawns[j][1]);
+                }
+                else if (i == 1)
+                {
+                    players[i].setLocation(blueSpawns[j][0], blueSpawns[j][1]);
+                }
+                else if (i == 2)
+                {
+                    players[i].setLocation(orangeSpawns[j][0], orangeSpawns[j][1]);
+                }
+                else if (i == 3)
+                {
+                    players[i].setLocation(redSpawns[j][0], redSpawns[j][1]);
+                }
+            }
         }
     }
 

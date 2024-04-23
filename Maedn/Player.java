@@ -10,6 +10,8 @@ public class Player extends Actor
 {
     public int id;
     public String direction;
+    private int fieldCount;
+
     GameBoard myWorld = (GameBoard)getWorld();
 
     public Player(int id) {
