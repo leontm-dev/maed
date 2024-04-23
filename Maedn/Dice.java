@@ -24,7 +24,7 @@ public class Dice extends Actor
     public void Roll()
     {
         if (!isRolled) {
-            int spinDice = Greenfoot.getRandomNumber(3) + 1;
+            int spinDice = 3;
             for (int i = 0; i < spinDice; i++)
             {
                 int number = Greenfoot.getRandomNumber(6) + 1;
