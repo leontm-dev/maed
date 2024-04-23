@@ -169,6 +169,7 @@ public class GameBoard extends World
     private void TurnStart()
     {
         showText("Turn: Player " + (turnInt + 1), 5, 5);
+        RemoveDices();
         showText("Click dice", dicePositions[turnInt][0], dicePositions[turnInt][1]);
     }
     
@@ -184,7 +185,11 @@ public class GameBoard extends World
         }
         TurnStart();
     }
-    
+    private void RemoveDices() {
+        for (int i = 0; i < dicePositions.length; i++) {
+            showText("", dicePositions[i][0], dicePositions[i][1]);
+        }
+    }
     public void act() {
         // Game logic goes here
     }
