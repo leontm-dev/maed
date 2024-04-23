@@ -201,6 +201,7 @@ public class GameBoard extends World
     {
         showText("Turn: Player " + (turnInt + 1), 5, 5);
         RemoveDices();
+        dice.setLocation(dicePositions[turnInt][0], dicePositions[turnInt][1]);
         showText("Click dice", dicePositions[turnInt][0], dicePositions[turnInt][1]);
     }
     

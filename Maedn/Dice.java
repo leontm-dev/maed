@@ -18,6 +18,7 @@ public class Dice extends Actor
     {
         if (Greenfoot.mouseClicked(this))
         {
+            System.out.println("HURENSOHN");
             Roll();
         }
     }
