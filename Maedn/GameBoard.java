@@ -33,6 +33,7 @@ public class GameBoard extends World
     private int[][] greenPositions;
     private int[][] bluePositions;
     private int[][] normalPositions;
+    private static int[][] dicePositions = { {2, 2}, {8, 2}, {8, 8}, {2, 8}};
     
     public static int[][] checkPoints = { {4, 0}, {6, 0}, {6, 4}, {10, 4}, {10, 6}, {6, 6}, {6, 10}, {4, 10}, {4, 6}, {0, 6}, {0, 4}, {4, 4}};
     // 0 = north, 1 = east, 2 = south, 3 = west
@@ -168,6 +169,7 @@ public class GameBoard extends World
     private void TurnStart()
     {
         showText("Turn: Player " + (turnInt + 1), 5, 5);
+        showText("Click dice", dicePositions[turnInt]);
     }
     
     public void TurnEnd()
