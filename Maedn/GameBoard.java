@@ -60,13 +60,13 @@ public class GameBoard extends World
         
         playerImages = new GreenfootImage[4];
         playerRed = new GreenfootImage("playerRed.png");
-        playerImages[0] = playerRed;
+        playerImages[3] = playerRed;
         playerOrange = new GreenfootImage("playerOrange.png");
-        playerImages[1] = playerOrange;
+        playerImages[2] = playerOrange;
         playerGreen = new GreenfootImage("playerGreen.png");
-        playerImages[2] = playerGreen;
+        playerImages[0] = playerGreen;
         playerBlue = new GreenfootImage("playerBlue.png");
-        playerImages[3] = playerBlue;
+        playerImages[1] = playerBlue;
         
         SetSpecialPositions();
         Greenfoot.delay(1);
@@ -164,7 +164,7 @@ public class GameBoard extends World
     }
 
     private void PreparePlayers() {
-        playerCount = 1;
+        playerCount = 4;
         players = new Player[playerCount];
         for (int i = 0; i < players.length; i++)
         {
