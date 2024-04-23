@@ -28,6 +28,7 @@ public class GameBoard extends World
     private GreenfootImage playerOrange;
     private GreenfootImage playerGreen;
     private GreenfootImage playerBlue;
+    private Dice dice = new Dice();
     
     private int[][] redPositions;
     private int[][] orangePositions;
@@ -173,6 +174,7 @@ public class GameBoard extends World
                 players[i].id = i;
                 players[i].setImage(playerImages[i]);
                 addObject(players[i], 75, 75);
+                addObject(dice, 75, 75);
 
                 if (i == 0)
                 {
@@ -198,6 +200,7 @@ public class GameBoard extends World
     {
         showText("Turn: Player " + (turnInt + 1), 5, 5);
         RemoveDices();
+        dice.setLocation(dicePositions[turnInt][0], dicePositions[turnInt][1]);
         showText("Click dice", dicePositions[turnInt][0], dicePositions[turnInt][1]);
     }
     
