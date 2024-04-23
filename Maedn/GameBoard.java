@@ -28,6 +28,7 @@ public class GameBoard extends World
     private GreenfootImage playerOrange;
     private GreenfootImage playerGreen;
     private GreenfootImage playerBlue;
+    private Dice dice = new Dice();
     
     private int[][] redPositions;
     private int[][] orangePositions;
@@ -172,6 +173,7 @@ public class GameBoard extends World
                 players[i] = new Player(i);
                 players[i].id = i;
                 players[i].setImage(playerImages[i]);
+                addObject(dice, 75, 75);
                 addObject(players[i], 75, 75);
 
                 if (i == 0)
