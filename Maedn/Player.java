@@ -31,8 +31,6 @@ public class Player extends Actor
             }
             */
             
-            getWorld().showText("Clicked", getX(), getY());
-            
             // Clicked on this player figure
             // Move this figure
             if (Dice.isRolled) {
