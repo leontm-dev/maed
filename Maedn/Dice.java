@@ -12,8 +12,13 @@ public class Dice extends Actor
      * Act - do whatever the Dice wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+<<<<<<< HEAD
     public static int currentNumber = 1;
     public static boolean isRolled = false;
+=======
+    public static int currentNumber = 1;
+    public static boolean isRolled = false;
+>>>>>>> 5283a50f77d84d35e01fb3de0f83ff760d8c8655
     public void act()
     {
         if (Greenfoot.mouseClicked(this))

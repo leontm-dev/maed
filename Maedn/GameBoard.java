@@ -164,9 +164,9 @@ public class GameBoard extends World
     }
 
     private void PreparePlayers() {
-        // Initialize players
+        playerCount = 2;
         players = new Player[playerCount - 1];
-        for (int i = 0; i < players.length; i++)
+        for (int i = 0; i < playerCount; i++)
         {
             for (int j = 0; j < 3; i++)
             {
