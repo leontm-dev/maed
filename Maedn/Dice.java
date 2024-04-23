@@ -16,7 +16,10 @@ public class Dice extends Actor
     public boolean isRolled = false;
     public void act()
     {
-        // Add your action code here.
+        if (Greenfoot.mouseClicked(this))
+        {
+            Roll();
+        }
     }
     public void Roll()
     {
@@ -25,7 +28,9 @@ public class Dice extends Actor
             for (int i = 0; i < spinDice; i++)
             {
                 int number = Greenfoot.getRandomNumber(6) + 1;
-                setImage(new GreenfootImage("dice" + number + ".png"));
+                // setImage(new GreenfootImage("dice" + number + ".png"));
+                currentNumber = number;
+                showText(currentNumber, getX(), getY());
                 Greenfoot.delay(0.5);
             }
             isRolled = true;
