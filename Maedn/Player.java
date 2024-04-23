@@ -35,7 +35,12 @@ public class Player extends Actor
             
             // Clicked on this player figure
             // Move this figure
-            Move();
+            if (Dice.isRolled) {
+                for (int i = 0; i < Dice.currentNumber; i++) 
+                {
+                    Move();
+                }
+            }
             ((GameBoard)getWorld()).TurnEnd();
         }
     }
