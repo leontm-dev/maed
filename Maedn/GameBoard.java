@@ -190,10 +190,6 @@ public class GameBoard extends World
             showText("", dicePositions[i][0], dicePositions[i][1]);
         }
     }
-    private void showText(String text, int x, int y)
-    {
-        getWorld.showText(text, x, y);
-    }
     public void act() {
         // Game logic goes here
     }
