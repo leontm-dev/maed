@@ -18,7 +18,6 @@ public class Dice extends Actor
     {
         if (Greenfoot.mouseClicked(this))
         {
-            System.out.println("HURENSOHN");
             Roll();
         }
     }
@@ -29,7 +28,7 @@ public class Dice extends Actor
             for (int i = 0; i < spinDice; i++)
             {
                 int number = Greenfoot.getRandomNumber(6) + 1;
-                // setImage(new GreenfootImage("dice" + number + ".png"));
+                // this.setImage(new GreenfootImage("dice" + number + ".png"));
                 currentNumber = number;
                 showText("" + currentNumber, getX(), getY());
                 Greenfoot.delay(1);
