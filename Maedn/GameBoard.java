@@ -184,6 +184,7 @@ public class GameBoard extends World
             turnInt = 0;
         }
         TurnStart();
+        Dice.isRolled = false;
     }
     private void RemoveDices() {
         for (int i = 0; i < dicePositions.length; i++) {
