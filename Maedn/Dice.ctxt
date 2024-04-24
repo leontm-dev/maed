@@ -5,6 +5,4 @@ comment1.params=
 comment1.target=void\ act()
 comment2.params=
 comment2.target=void\ Roll()
-comment3.params=text\ x\ y
-comment3.target=void\ showText(java.lang.String,\ int,\ int)
-numComments=4
+numComments=3
