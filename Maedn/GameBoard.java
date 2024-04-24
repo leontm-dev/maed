@@ -17,6 +17,7 @@ public class GameBoard extends World
     public static int turnInt;
     private int playerCount = 2;
     public static boolean gameStart = true;
+    public static String playerCountInput;
 
     private GreenfootImage bgImage;
     private GreenfootImage normalImage;
@@ -219,22 +220,32 @@ public class GameBoard extends World
         Dice.isRolled = false;
     }
     public void act() {
+        while (!gameStart)
+        {
+            playerCountInput = Greenfoot.ask("How many players do you want to play with? (2-4)");
+            if (playerCountInput == "2" || playerCountInput == "3" || playerCountInput == "4")
+            {
+                playerCount = Integer.parseInt(playerCountInput);
+                gameStart = true;
+            }
+            else 
+            {
+                showText("Please enter a valid number", 5, 5);
+                Greenfoot.delay(100);
+            }
+        }
         if (gameStart)
         {
-            String key = Greenfoot.getKey();
-            if (key == "1")
-            {
-                showText("P1", 1, 1);
-            } else if (key == "2")
+            if (playerCountInput == "2")
             {
                 showText("P1", 1, 1);
                 showText("P2", 9, 1);
-            } else if (key == "3")
+            } else if (playerCountInput == "3")
             {
                 showText("P1", 1, 1);
                 showText("P2", 9, 1);
                 showText("P3", 9, 9);
-            } else if (key == "4")
+            } else if (playerCountInput == "4")
             {
                 showText("P1", 1, 1);
                 showText("P2", 9, 1);
