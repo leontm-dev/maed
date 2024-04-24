@@ -73,10 +73,9 @@ public class GameBoard extends World
         SetSpecialPositions();
         Greenfoot.delay(1);
         PrepareBoard();
-        PreparePlayers();
-        
+
         turnInt = 0;
-        TurnStart();
+        gameStart = false;
     }
     
     private void SetSpecialPositions()
@@ -166,7 +165,6 @@ public class GameBoard extends World
     }
 
     private void PreparePlayers() {
-        playerCount = 4;
         players = new Player[playerCount];
         for (int i = 0; i < players.length; i++)
         {
@@ -219,6 +217,7 @@ public class GameBoard extends World
         TurnStart();
         Dice.isRolled = false;
     }
+
     public void act() {
         while (!gameStart)
         {
@@ -240,6 +239,8 @@ public class GameBoard extends World
                     showText("Invalid input", 5, 5);
                     break;
             }
+            PreparePlayers();
+            TurnStart();
         }
         if (gameStart)
         {
