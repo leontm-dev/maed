@@ -195,6 +195,7 @@ public class GameBoard extends World
                 }
             }
         }
+        gameStart = true;
     }
 
     private void TurnStart()
@@ -214,8 +215,9 @@ public class GameBoard extends World
         {
             turnInt = 0;
         }
-        TurnStart();
+
         Dice.isRolled = false;
+        TurnStart();
     }
 
     public void act() {
@@ -244,6 +246,11 @@ public class GameBoard extends World
         }
         if (gameStart)
         {
+            // 
+            // So willst du das machen? Ist das nicht ein bisschen aufwendig und dem Spieler scheiß egal?
+            // Zudem müsste man bei jedem move den alten Text löschen und neuen schreiben
+            // 
+
             if (playerCountInput == "2")
             {
                 showText("P1", 1, 1);
