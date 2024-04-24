@@ -174,7 +174,7 @@ public class GameBoard extends World
                 players[i] = new Player(i);
                 players[i].id = i;
                 players[i].setImage(playerImages[i]);
-                dice.setImage(playerImages[i]);
+                dice.setImage(new GreenfootImage("Dice0.png"));
                 addObject(dice, 75, 75);
                 addObject(players[i], 75, 75);
 
@@ -201,9 +201,8 @@ public class GameBoard extends World
     private void TurnStart()
     {
         showText("Turn: Player " + (turnInt + 1), 5, 5);
-        RemoveDices();
         dice.setLocation(dicePositions[turnInt][0], dicePositions[turnInt][1]);
-        showText("Click dice", dicePositions[turnInt][0], dicePositions[turnInt][1]);
+        dice.setImage(new GreenfootImage("Dice0.png"));
     }
     
     public void TurnEnd()
@@ -218,11 +217,6 @@ public class GameBoard extends World
         }
         TurnStart();
         Dice.isRolled = false;
-    }
-    private void RemoveDices() {
-        for (int i = 0; i < dicePositions.length; i++) {
-            showText("", dicePositions[i][0], dicePositions[i][1]);
-        }
     }
     public void act() {
         if (gameStart)
