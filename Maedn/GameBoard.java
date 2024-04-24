@@ -224,16 +224,22 @@ public class GameBoard extends World
             String key = Greenfoot.getKey();
             if (key == "1")
             {
-                // Spawn 1
+                showText("P1", 1, 1);
             } else if (key == "2")
             {
-                // Spawn 2
+                showText("P1", 1, 1);
+                showText("P2", 9, 1);
             } else if (key == "3")
             {
-                // Spawn 3
+                showText("P1", 1, 1);
+                showText("P2", 9, 1);
+                showText("P3", 9, 9);
             } else if (key == "4")
             {
-                // Spawn 4
+                showText("P1", 1, 1);
+                showText("P2", 9, 1);
+                showText("P3", 9, 9);
+                showText("P4", 1, 9);
             }
             // ...
         }
