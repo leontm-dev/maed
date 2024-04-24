@@ -1,10 +1,5 @@
 import greenfoot.*;
 
-
-// for dicing
-// Greenfoot.getRandomNumber
-
-
 public class GameBoard extends World
 {
     public static int cellSize = 75;
@@ -30,7 +25,7 @@ public class GameBoard extends World
     private GreenfootImage playerOrange;
     private GreenfootImage playerGreen;
     private GreenfootImage playerBlue;
-    private Dice dice = new Dice();
+    private Dice dice;
     
     private int[][] redPositions;
     private int[][] orangePositions;
@@ -73,6 +68,9 @@ public class GameBoard extends World
         SetSpecialPositions();
         Greenfoot.delay(1);
         PrepareBoard();
+
+        dice = new Dice();
+        dice.isRolled = false;
 
         turnInt = 0;
         gameStart = false;
@@ -172,6 +170,7 @@ public class GameBoard extends World
             {
                 players[i] = new Player(i);
                 players[i].id = i;
+                players[i].spawnId = j;
                 players[i].setImage(playerImages[i]);
                 dice.setImage(new GreenfootImage("Dice0.png"));
                 addObject(dice, 75, 75);
@@ -187,11 +186,11 @@ public class GameBoard extends World
                 }
                 else if (i == 2)
                 {
-                    players[i].setLocation(orangeSpawns[j][0], orangeSpawns[j][1]);
+                    players[i].setLocation(redSpawns[j][0], redSpawns[j][1]);
                 }
                 else if (i == 3)
                 {
-                    players[i].setLocation(redSpawns[j][0], redSpawns[j][1]);
+                    players[i].setLocation(orangeSpawns[j][0], orangeSpawns[j][1]);
                 }
             }
         }
@@ -204,8 +203,36 @@ public class GameBoard extends World
         dice.setImage(new GreenfootImage("Dice0.png"));
     }
     
-    public void TurnEnd()
+    public void TurnEnd(Player player)
     {
+        for (int i = 0; i < players.length; i++)
+        {
+            if (players[i].getX() == player.getX() && players[i].getY() == player.getY())
+            {
+                if (players[i] != player)
+                {
+                    if (players[i].id == player.id) // own team
+                    {
+                        dice.isRolled = false;
+                        dice.setImage(new GreenfootImage("Dice0.png"));
+                        if (player.inGame)
+                        {
+                            player.setLocation(player.positionNow[0][0], player.positionNow[0][1]);
+                        }
+                        else
+                        {
+                            player.Collision();
+                        }
+                        return;
+
+                    }
+                    else
+                    {
+                        players[i].Collision();
+                    }
+                }
+            }
+        }
         if (turnInt < players.length - 1)
         {
             turnInt++;
