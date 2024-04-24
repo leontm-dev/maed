@@ -1,11 +1,6 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 import java.util.*;
-/**
- * Write a description of class Player here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+
 public class Player extends Actor
 {
     public int id;
@@ -26,11 +21,33 @@ public class Player extends Actor
     {
         if (Greenfoot.mouseClicked(this))
         {
-            if (GameBoard.turnInt != id || fieldCount == 0 || !Dice.isRolled)    // TODO: Max fields or to big
+            if (GameBoard.turnInt != id || !Dice.isRolled)    // TODO: Max fieldCount or to big
             {
                 return;
             }
-            
+            if (fieldCount == 0)
+            {
+                if (Dice.currentNumber == 6)
+                {
+                    if (id == 0)
+                    {
+                        players[i].setLocation(greenSpawns[3][0], greenSpawns[3][1]);
+                    }
+                    else if (id == 1)
+                    {
+                        players[i].setLocation(blueSpawns[3][0], blueSpawns[3][1]);
+                    }
+                    else if (id == 2)
+                    {
+                        players[i].setLocation(orangeSpawns[3][0], orangeSpawns[3][1]);
+                    }
+                    else if (id == 3)
+                    {
+                        players[i].setLocation(redSpawns[3][0], redSpawns[3][1]);
+                    }
+                    setLocation(GameBoard.spaw)
+                }
+            }
             if (Dice.isRolled)
             {
                 for (int i = 0; i < Dice.currentNumber; i++)

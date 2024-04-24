@@ -1,10 +1,6 @@
 import greenfoot.*;
 
 
-// for dicing
-// Greenfoot.getRandomNumber
-
-
 public class GameBoard extends World
 {
     public static int cellSize = 75;
