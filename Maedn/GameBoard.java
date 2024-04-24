@@ -16,7 +16,7 @@ public class GameBoard extends World
     private int[] positions;
     public static int turnInt;
     private int playerCount = 2;
-    public static boolean gameStart = true;
+    public static boolean gameStart = false;
     public static String playerCountInput;
 
     private GreenfootImage bgImage;
