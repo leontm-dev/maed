@@ -16,6 +16,7 @@ public class GameBoard extends World
     private int[] positions;
     public static int turnInt;
     private int playerCount = 2;
+    public static boolean gameStart = true;
 
     private GreenfootImage bgImage;
     private GreenfootImage normalImage;
@@ -227,9 +228,18 @@ public class GameBoard extends World
         if (gameStart)
         {
             String key = Greenfoot.getKey();
-            if (key == 1)
+            if (key == "1")
             {
                 // Spawn 1
+            } else if (key == "2")
+            {
+                // Spawn 2
+            } else if (key == "3")
+            {
+                // Spawn 3
+            } else if (key == "4")
+            {
+                // Spawn 4
             }
             // ...
         }
