@@ -30,8 +30,7 @@ public class Dice extends Actor
                 int number = Greenfoot.getRandomNumber(6) + 1;
                 // this.setImage(new GreenfootImage("dice" + number + ".png"));
                 currentNumber = number;
-                System.out.println(""+currentNumber);
-                showText("" + currentNumber, getX(), getY());
+                setImage(new GreenfootImage("Dice" + number + ".png"));
                 Greenfoot.delay(50);
             }
             isRolled = true;
