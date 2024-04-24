@@ -36,8 +36,4 @@ public class Dice extends Actor
             isRolled = true;
         }
     }
-    private void showText(String text, int x, int y)
-    {
-        getWorld().showText(text, x, y);
-    }
 }
