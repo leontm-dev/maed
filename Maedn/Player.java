@@ -31,21 +31,20 @@ public class Player extends Actor
                 {
                     if (id == 0)
                     {
-                        players[i].setLocation(greenSpawns[3][0], greenSpawns[3][1]);
+                        setLocation(GameBoard.greenSpawns[3][0], GameBoard.greenSpawns[3][1]);
                     }
                     else if (id == 1)
                     {
-                        players[i].setLocation(blueSpawns[3][0], blueSpawns[3][1]);
+                        setLocation(GameBoard.blueSpawns[3][0], GameBoard.blueSpawns[3][1]);
                     }
                     else if (id == 2)
                     {
-                        players[i].setLocation(orangeSpawns[3][0], orangeSpawns[3][1]);
+                        setLocation(GameBoard.orangeSpawns[3][0], GameBoard.orangeSpawns[3][1]);
                     }
                     else if (id == 3)
                     {
-                        players[i].setLocation(redSpawns[3][0], redSpawns[3][1]);
+                        setLocation(GameBoard.redSpawns[3][0], GameBoard.redSpawns[3][1]);
                     }
-                    setLocation(GameBoard.spaw)
                 }
             }
             if (Dice.isRolled)

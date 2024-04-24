@@ -1,6 +1,10 @@
 import greenfoot.*;
 
 
+// for dicing
+// Greenfoot.getRandomNumber
+
+
 public class GameBoard extends World
 {
     public static int cellSize = 75;
@@ -34,12 +38,12 @@ public class GameBoard extends World
     private int[][] bluePositions;
     private int[][] normalPositions;
 
-    private static int[][] dicePositions = { {2, 2}, {8, 2}, {8, 8}, {2, 8}};
+    public static int[][] dicePositions = { {2, 2}, {8, 2}, {8, 8}, {2, 8}};
 
-    private static int[][] redSpawns = { {10, 9}, {9, 10}, {10, 10}, {10, 6}};
-    private static int[][] orangeSpawns = { {0, 10}, {0, 9}, {1, 10}, {4, 10}};
-    private static int[][] greenSpawns = { {0, 0}, {1, 0}, {0, 1}, {0, 4}};
-    private static int[][] blueSpawns = { {9, 0}, {10, 0}, {10, 1}, {6, 0}};
+    public static int[][] redSpawns = { {10, 9}, {9, 10}, {10, 10}, {10, 6}};
+    public static int[][] orangeSpawns = { {0, 10}, {0, 9}, {1, 10}, {4, 10}};
+    public static int[][] greenSpawns = { {0, 0}, {1, 0}, {0, 1}, {0, 4}};
+    public static int[][] blueSpawns = { {9, 0}, {10, 0}, {10, 1}, {6, 0}};
 
     
     public static int[][] checkPoints = { {4, 0}, {6, 0}, {6, 4}, {10, 4}, {10, 6}, {6, 6}, {6, 10}, {4, 10}, {4, 6}, {0, 6}, {0, 4}, {4, 4}};
@@ -191,7 +195,6 @@ public class GameBoard extends World
                 }
             }
         }
-        gameStart = true;
     }
 
     private void TurnStart()
@@ -211,9 +214,8 @@ public class GameBoard extends World
         {
             turnInt = 0;
         }
-
-        Dice.isRolled = false;
         TurnStart();
+        Dice.isRolled = false;
     }
 
     public void act() {
@@ -242,11 +244,6 @@ public class GameBoard extends World
         }
         if (gameStart)
         {
-            // 
-            // So willst du das machen? Ist das nicht ein bisschen aufwendig und dem Spieler scheiß egal?
-            // Zudem müsste man bei jedem move den alten Text löschen und neuen schreiben
-            // 
-
             if (playerCountInput == "2")
             {
                 showText("P1", 1, 1);
