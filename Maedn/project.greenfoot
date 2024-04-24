@@ -1,6 +1,6 @@
 #Greenfoot project file
 class.Cell.image=bgImage.png
-class.Dice.image=Dice6.png
+class.Dice.image=Dice0.png
 dependency1.from=GameBoard
 dependency1.to=Dice
 dependency1.type=UsesDependency
