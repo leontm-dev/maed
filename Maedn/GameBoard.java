@@ -201,7 +201,7 @@ public class GameBoard extends World
 
     private void TurnStart()
     {
-        showText("Turn: Player " + (turnInt + 1), 5, 5);
+        showText("P" + (turnInt + 1) + "'s turn", 5, 5);
         dice.setLocation(dicePositions[turnInt][0], dicePositions[turnInt][1]);
         dice.setImage(new GreenfootImage("Dice0.png"));
     }
@@ -223,15 +223,22 @@ public class GameBoard extends World
         while (!gameStart)
         {
             playerCountInput = Greenfoot.ask("How many players do you want to play with? (2-4)");
-            if (playerCountInput == "2" || playerCountInput == "3" || playerCountInput == "4")
-            {
-                playerCount = Integer.parseInt(playerCountInput);
-                gameStart = true;
-            }
-            else 
-            {
-                showText("Please enter a valid number", 5, 5);
-                Greenfoot.delay(100);
+            switch (playerCountInput) {
+                case "2":
+                    gameStart = true;
+                    playerCount = 2;
+                    break;
+                case "3":
+                    gameStart = true;
+                    playerCount = 3;
+                    break;
+                case "4":
+                    gameStart = true;
+                    playerCount = 4;
+                    break;
+                default:
+                    showText("Invalid input", 5, 5);
+                    break;
             }
         }
         if (gameStart)
