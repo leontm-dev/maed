@@ -12,6 +12,7 @@ public class GameBoard extends World
     public static int turnInt;
     private int playerCount = 2;
     public static boolean gameStart = false;
+    public static boolean gameEnd = false;
     public static String playerCountInput;
 
     private GreenfootImage bgImage;
@@ -41,9 +42,9 @@ public class GameBoard extends World
     public static int[][] blueSpawns = { {9, 0}, {10, 0}, {10, 1}, {6, 0}};
 
     
-    public static int[][] checkPoints = { {4, 0}, {6, 0}, {6, 4}, {10, 4}, {10, 6}, {6, 6}, {6, 10}, {4, 10}, {4, 6}, {0, 6}, {0, 4}, {4, 4}};
-    // 0 = north, 1 = east, 2 = south, 3 = west
-    public static int[] directionCheckpoint = {1, 2, 1, 2, 3, 2, 3, 0, 3, 0, 1, 0};
+    public static int[][] checkPoints = { {4, 0}, {5, 0}, {6, 0}, {6, 4}, {10, 4}, {10, 5}, {10, 6}, {6, 6}, {6, 10}, {5, 10}, {4, 10}, {4, 6}, {0, 6}, {0, 5}, {0, 4}, {4, 4}};
+    // 0 = north, 1 = east, 2 = south, 3 = west, 4 = green, 5 = blue, 6 = red, 7 = orange
+    public static int[] directionCheckpoint = {1, 5, 2, 1, 2, 6, 3, 2, 3, 7, 0, 3, 0, 4, 1, 0};     // 4, 5, 6, 7 for special checkpoint (finish places)
 
     public GameBoard()
     {
@@ -199,15 +200,43 @@ public class GameBoard extends World
         TurnStart();
     }
 
-    private void TurnStart()
+    public void UpdateText()
     {
         showText("P" + (turnInt + 1) + "'s turn", 5, 5);
+    }
+
+    public void UpdateFieldCount(Player player)
+    {
+        for (int i = 0; i < players.length; i++)
+        {
+            if (players[i] != player)
+            {
+                if (players[i].id == player.id) // own team
+                {
+                    if (players[i].maxFieldCount > 41)
+                    {
+                        players[i].maxFieldCount--;
+                    }
+                    else
+                    {
+                        gameEnd = true;
+                        // TODO: ENDSCREEN, ...
+                    }
+                }
+            }
+        }
+    }
+
+    private void TurnStart()
+    {
+        UpdateText();
         dice.setLocation(dicePositions[turnInt][0], dicePositions[turnInt][1]);
         dice.setImage(new GreenfootImage("Dice0.png"));
     }
     
     public void TurnEnd(Player player)
     {
+        UpdateText();
         for (int i = 0; i < players.length; i++)
         {
             if (players[i].getX() == player.getX() && players[i].getY() == player.getY())

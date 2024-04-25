@@ -6,9 +6,12 @@ public class Player extends Actor
     public int id;
     public int spawnId;
     public String direction;
+    public String directionSave;
     public int fieldCount;
+    public int maxFieldCount;
     public int fieldCountSave;
     public int[][] positionNow;
+    public boolean inPosition;
 
     GameBoard myWorld = (GameBoard)getWorld();
 
@@ -16,6 +19,8 @@ public class Player extends Actor
         this.id = id;
         this.spawnId = spawnId;
         fieldCount = 0;
+        maxFieldCount = 43;
+        inPosition = false;
     }
 
     public int getId() {
@@ -26,12 +31,16 @@ public class Player extends Actor
     {
         if (Greenfoot.mouseClicked(this))
         {
-            if (GameBoard.turnInt != id)    // TODO: Max fieldCount or to big
+            if (GameBoard.turnInt != id || GameBoard.gamEnd)    // TODO: Max fieldCount or to big
             {
-                if (!Dice.isRolled && !Dice.collisionIsRolled)
-                {
-                    return;
-                }
+                return;
+            }
+            if (!Dice.isRolled && !Dice.collisionIsRolled)
+            {
+                return;
+            }
+            else if (Dice.collisionIsRolled)
+            {
                 Dice.collisionIsRolled = false;
             }
 
@@ -39,19 +48,36 @@ public class Player extends Actor
                 {getX(), getY()}
             };
             fieldCountSave = fieldCount;
+            directionSave = direction;
 
             if (Dice.isRolled && fieldCount > 0)
             {
-                for (int i = 0; i < Dice.currentNumber; i++)
+                if (maxFieldCount >= (Dice.currentNumber + fieldCount))
                 {
-                    Move();
-                    Greenfoot.delay(15);
+                    for (int i = 0; i < Dice.currentNumber; i++)
+                    {
+                        Move();
+                        Greenfoot.delay(15);
+                    }
+                }
+                else
+                {
+                    getWorld().showText("Would go to far!", 5, 5);
+                    Greenfoot.delay(100);
+                    Dice.collisionIsRolled = true;
+                    return;
+                }
+
+                if (maxFieldCount == fieldCount)
+                {
+                    inPosition = true;
+                    ((GameBoard)getWorld()).UpdateFieldCount(this);
                 }
             }
             if (fieldCount == 0)
             {
-                //if (Dice.currentNumber != 6)
-                //{
+                if (Dice.currentNumber != 6)
+                {
                     positionNow = new int[][]{
                         {getX(), getY()}
                     };
@@ -72,7 +98,7 @@ public class Player extends Actor
                         setLocation(GameBoard.orangeSpawns[3][0], GameBoard.orangeSpawns[3][1]);
                     }
                     fieldCount++;
-                //}
+                }
             }
             ((GameBoard)getWorld()).TurnEnd(this);
         }
@@ -99,6 +125,30 @@ public class Player extends Actor
                         case 3:
                             ChangeDirectionOfPlayer("west");
                             break;
+                        case 4:
+                            if (id == 0)
+                            {
+                                ChangeDirectionOfPlayer("east");
+                            }
+                            break;
+                        case 5:
+                            if (id == 1)
+                            {
+                                ChangeDirectionOfPlayer("south");
+                            }
+                            break;
+                        case 6:
+                            if (id == 2)
+                            {
+                                ChangeDirectionOfPlayer("west");
+                            }
+                            break;
+                        case 7:
+                            if (id == 3)
+                            {
+                                ChangeDirectionOfPlayer("north");
+                            }
+                            break;
                     }
             }
             i++;
@@ -122,6 +172,7 @@ public class Player extends Actor
         {
             setLocation(positionNow[0][0], positionNow[0][1]);
             fieldCount = fieldCountSave;
+            direction = directionSave;
         }
         else
         {
