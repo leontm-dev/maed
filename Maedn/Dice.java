@@ -4,6 +4,7 @@ public class Dice extends Actor
 {
     public static int currentNumber = 1;
     public static boolean isRolled = false;
+    public static boolean collisionIsRolled = false;
 
     public void act()
     {

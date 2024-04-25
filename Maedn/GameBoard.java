@@ -162,38 +162,41 @@ public class GameBoard extends World
         return "bg";
     }
 
-    private void PreparePlayers() {
-        players = new Player[playerCount];
-        for (int i = 0; i < players.length; i++)
+    private void PreparePlayers()
+    {
+        players = new Player[playerCount * 3];
+        int h = 0;
+        for (int i = 0; i < playerCount; i++)
         {
             for (int j = 0; j < 3; j++)
             {
-                players[i] = new Player(i);
-                players[i].id = i;
-                players[i].spawnId = j;
-                players[i].setImage(playerImages[i]);
-                dice.setImage(new GreenfootImage("Dice0.png"));
-                addObject(dice, 75, 75);
-                addObject(players[i], 75, 75);
+                players[h] = new Player(i, j);
+                players[h].setImage(playerImages[i]);
+                addObject(players[h], 75, 75);
 
                 if (i == 0)
                 {
-                    players[i].setLocation(greenSpawns[j][0], greenSpawns[j][1]);
+                    players[h].setLocation(greenSpawns[j][0], greenSpawns[j][1]);
                 }
                 else if (i == 1)
                 {
-                    players[i].setLocation(blueSpawns[j][0], blueSpawns[j][1]);
+                    players[h].setLocation(blueSpawns[j][0], blueSpawns[j][1]);
                 }
                 else if (i == 2)
                 {
-                    players[i].setLocation(redSpawns[j][0], redSpawns[j][1]);
+                    players[h].setLocation(redSpawns[j][0], redSpawns[j][1]);
                 }
                 else if (i == 3)
                 {
-                    players[i].setLocation(orangeSpawns[j][0], orangeSpawns[j][1]);
+                    players[h].setLocation(orangeSpawns[j][0], orangeSpawns[j][1]);
                 }
+                h++;
             }
         }
+        dice.setImage(new GreenfootImage("Dice0.png"));
+        addObject(dice, 75, 75);
+
+        TurnStart();
     }
 
     private void TurnStart()
@@ -213,27 +216,19 @@ public class GameBoard extends World
                 {
                     if (players[i].id == player.id) // own team
                     {
-                        dice.isRolled = false;
-                        dice.setImage(new GreenfootImage("Dice0.png"));
-                        if (player.inGame)
-                        {
-                            player.setLocation(player.positionNow[0][0], player.positionNow[0][1]);
-                        }
-                        else
-                        {
-                            player.Collision();
-                        }
+                        dice.collisionIsRolled = true;
+                        player.Collision(true);
                         return;
 
                     }
                     else
                     {
-                        players[i].Collision();
+                        players[i].Collision(false);
                     }
                 }
             }
         }
-        if (turnInt < players.length - 1)
+        if (turnInt < playerCount - 1)
         {
             turnInt++;
         }
@@ -241,8 +236,8 @@ public class GameBoard extends World
         {
             turnInt = 0;
         }
-        TurnStart();
         Dice.isRolled = false;
+        TurnStart();
     }
 
     public void act() {
@@ -267,27 +262,27 @@ public class GameBoard extends World
                     break;
             }
             PreparePlayers();
-            TurnStart();
         }
         if (gameStart)
         {
-            if (playerCountInput == "2")
+            if (playerCount == 2)
             {
                 showText("P1", 1, 1);
                 showText("P2", 9, 1);
-            } else if (playerCountInput == "3")
+            }
+            else if (playerCount == 3)
             {
                 showText("P1", 1, 1);
                 showText("P2", 9, 1);
                 showText("P3", 9, 9);
-            } else if (playerCountInput == "4")
+            }
+            else if (playerCount == 4)
             {
                 showText("P1", 1, 1);
                 showText("P2", 9, 1);
                 showText("P3", 9, 9);
                 showText("P4", 1, 9);
             }
-            // ...
         }
     }
 }
