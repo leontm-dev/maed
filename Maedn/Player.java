@@ -31,7 +31,7 @@ public class Player extends Actor
     {
         if (Greenfoot.mouseClicked(this))
         {
-            if (GameBoard.turnInt != id || GameBoard.gamEnd)    // TODO: Max fieldCount or to big
+            if (GameBoard.turnInt != id || GameBoard.gameEnd)    // TODO: Max fieldCount or to big
             {
                 return;
             }
